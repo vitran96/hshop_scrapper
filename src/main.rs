@@ -1,3 +1,5 @@
+use std::process::exit;
+
 use regex::Regex;
 use scraper::{Html, Selector};
 
@@ -40,7 +42,7 @@ fn main() {
     println!("Nums of page to scrap {nums_of_page}");
 
     let game_info_cards_selector =
-        Selector::parse("div.elements > a").expect("Cannot parse CSS selector");
+        Selector::parse("div.pre-top > div.elements > a").expect("Cannot parse CSS selector");
 
     let game_download_link_selector = Selector::parse(".btn").expect("Cannot parse CSS selector");
 
@@ -87,6 +89,9 @@ fn main() {
         let page_document = Html::parse_document(&page_body);
 
         let game_info_card_elements = page_document.select(&game_info_cards_selector);
+
+        // let game_entry_count = game_info_card_elements.count();
+        // println!("Found {game_entry_count} game entries.");
 
         let mut game_page_count = 0;
         println!("Get Game info");
@@ -152,7 +157,7 @@ fn main() {
 
         current_page += 1;
 
-        wtr.flush().expect("Failed to flush");
+        // wtr.flush().expect("Failed to flush");
     }
 
     wtr.flush().expect("Could not close file");
