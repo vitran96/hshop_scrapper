@@ -1,5 +1,7 @@
 [workspace]
+resolver = "2"
 
 members = [
-    "all3ds_link"
+    "all3ds_link",
+    "choose_game"
 ]
