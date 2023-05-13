@@ -49,25 +49,24 @@ fn main() {
         Selector::parse(".base-info > h3:nth-child(1)").expect("Cannot parse CSS selector");
 
     // div.elements:nth-child(2) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)
-    let game_id_selector =
-        Selector::parse(".base-info > .meta > div:nth-child(1) > span:nth-child(1)")
-            .expect("Cannot parse CSS selector");
+    let game_id_selector = Selector::parse("a > .meta > div:nth-child(1) > span:nth-child(1)")
+        .expect("Cannot parse CSS selector");
 
     // div.elements:nth-child(2) > a:nth-child(1) > div:nth-child(2) > div:nth-child(3)
-    // let game_title_id_selector = Selector::parse(".base-info > .meta > div:nth-child(3) > span:nth-child(1)").expect("Cannot parse CSS selector");
+    // let game_title_id_selector = Selector::parse(".meta > div:nth-child(3) > span:nth-child(1)").expect("Cannot parse CSS selector");
 
     // div.elements:nth-child(2) > a:nth-child(1) > div:nth-child(2) > div:nth-child(4) > span:nth-child(1)
     let game_size_selector: Selector =
-        Selector::parse(".base-info > .meta > div:nth-child(4) > span:nth-child(1)")
+        Selector::parse(".meta > div:nth-child(4) > span:nth-child(1)")
             .expect("Cannot parse CSS selector");
 
     // div.elements:nth-child(2) > a:nth-child(1) > div:nth-child(2) > div:nth-child(5) > span:nth-child(1)
     let game_version_selector: Selector =
-        Selector::parse(".base-info > .meta > div:nth-child(5) > span:nth-child(1)")
+        Selector::parse(".meta > div:nth-child(5) > span:nth-child(1)")
             .expect("Cannot parse CSS selector");
 
     // div.elements:nth-child(2) > a:nth-child(1) > div:nth-child(2) > div:nth-child(6) > span:nth-child(1)
-    // let game_product_code: Selector = Selector::parse(".base-info > .meta > div:nth-child(6) > span:nth-child(1)").expect("Cannot parse CSS selector");
+    // let game_product_code: Selector = Selector::parse(".meta > div:nth-child(6) > span:nth-child(1)").expect("Cannot parse CSS selector");
 
     let mut wtr = csv::Writer::from_path("hshop_na_db.csv").expect("Could not create file.");
     wtr.write_record(&["ID", "Title", "Version", "Size", "Download link"])
