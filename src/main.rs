@@ -1,5 +1,3 @@
-use std::process::exit;
-
 use regex::Regex;
 use scraper::{Html, Selector};
 
@@ -75,7 +73,7 @@ fn main() {
         .expect("Could not write header.");
 
     let mut current_page = 0;
-    while current_page < nums_of_page {
+    while current_page <= nums_of_page {
         println!("Page {current_page}");
 
         let offset = current_page * 100;
@@ -89,9 +87,6 @@ fn main() {
         let page_document = Html::parse_document(&page_body);
 
         let game_info_card_elements = page_document.select(&game_info_cards_selector);
-
-        // let game_entry_count = game_info_card_elements.count();
-        // println!("Found {game_entry_count} game entries.");
 
         let mut game_page_count = 0;
         println!("Get Game info");
